@@ -60,18 +60,3 @@ describe('Trampoline', () => {
 		);
 	});
 });
-
-describe('TrampolinePromise', () => {
-	it('should return 15', () => {
-		assert.equal(
-			FP.trampoline(function f(sum, num, ...nums) {
-				sum += num;
-				if (nums.length == 0) return sum;
-				return function() {
-					return f(sum, ...nums);
-				};
-			})(1, 2, 3, 4, 5),
-			15
-		);
-	});
-});
